@@ -1,0 +1,51 @@
+#
+# Copyright (C) 2015 MediaTek Inc.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 2 as
+# published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+
+#
+# Touchscreen driver configuration
+#
+if TOUCHSCREEN_MTK_FT5X26
+
+config TPD_AUTO_UPGRADE
+	bool "auto judge and upgreade firmware for ft5x26 touchscreen"
+	help
+		Auto judge and upgrade firmware function for FT5X26.
+		It will auto judge is need to upgrade FW or not in touch driver.
+		Say Y here if you want to enable this function.
+		If unsure, say N.
+
+config TPD_PROXIMITY
+	bool "proximity detection function"
+	help
+		Touch screen will detect the screen near or far from human face.
+		Works just like proximity sensor.
+		Say Y here if you want to enable proximity function of touch.
+		If unsure, say N.
+
+config FTS_GESTRUE_EN
+	bool "gesture wakeup function for ft5x26 touch"
+	help
+		Gesture wakeup function of FT5X26.
+		It can wakeup your set by special gesture on touchscreen.
+		Say Y here if you want to enable gesture wakeup function.
+		If unsure, say N.
+
+config TPD_CLOSE_POWER_IN_SLEEP
+  bool "touch power off when suspend"
+	help
+		Turn off power for touchscreen in suspend stage.
+		It will disable regulator of touch when suspend.
+		Say Y here if you want to disable touch regulator when touch suspend.
+		If unsure, say N.
+
+endif

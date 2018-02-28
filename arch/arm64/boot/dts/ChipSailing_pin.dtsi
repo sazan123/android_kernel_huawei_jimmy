@@ -1,0 +1,191 @@
+/*******************finger pin start ****************/
+
+
+/*FINGERPRINT GPIO standardization*/
+#define __CS_FINGERPRINT_EINT_EN_PIN_NUM__           0
+#define __CS_FINGERPRINT_EINT_PIN__                  PINMUX_GPIO0__FUNC_GPIO0
+#define __CS_FINGERPRINT_RESET_PIN__                 PINMUX_GPIO18__FUNC_GPIO18  
+ 
+#define __CS_FINGERPRINT_MI_PIN__          		 PINMUX_GPIO95__FUNC_SPI0_MI 
+#define __CS_FINGERPRINT_CS_PIN__    				 PINMUX_GPIO96__FUNC_SPI0_CSB 
+#define __CS_FINGERPRINT_MO_PIN__     				 PINMUX_GPIO97__FUNC_SPI0_MO 
+#define __CS_FINGERPRINT_CLK_PIN__    				 PINMUX_GPIO98__FUNC_SPI0_CLK
+
+	/*add by chipsailing sunwei for mtk 2.0 prj*/
+	&cs_finger {
+		pinctrl-names = "cs_finger_pins_default", "cs_finger_reset_en0","cs_finger_reset_en1","cs_finger_spi0_mi_as_spi0_mi","cs_finger_spi0_mi_as_gpio",
+                      "cs_finger_spi0_mo_as_spi0_mo","cs_finger_spi0_mo_as_gpio","cs_finger_spi0_clk_as_spi0_clk","cs_finger_spi0_clk_as_gpio","cs_finger_spi0_cs_as_spi0_cs",
+                          "cs_finger_spi0_cs_as_gpio","cs_finger_int_as_int","cs_finger_eint_pull_down","cs_finger_eint_pull_disable","cs_finger_pwr_off", "cs_finger_pwr_on";
+		pinctrl-0 = <&cs_finger_pins_default>;
+		pinctrl-1 = <&cs_finger_reset_en0>;
+		pinctrl-2 = <&cs_finger_reset_en1>;
+		pinctrl-3 = <&cs_finger_spi0_mi_as_spi0_mi>;
+		pinctrl-4 = <&cs_finger_spi0_mi_as_gpio>;
+		pinctrl-5 = <&cs_finger_spi0_mo_as_spi0_mo>;
+		pinctrl-6 = <&cs_finger_spi0_mo_as_gpio>;
+		pinctrl-7 = <&cs_finger_spi0_clk_as_spi0_clk>;
+		pinctrl-8= <&cs_finger_spi0_clk_as_gpio>;
+		pinctrl-9= <&cs_finger_spi0_cs_as_spi0_cs>;
+		pinctrl-10= <&cs_finger_spi0_cs_as_gpio>;
+		pinctrl-11= <&cs_finger_int_as_int>;
+		pinctrl-12= <&cs_finger_eint_pull_down>;
+		pinctrl-13= <&cs_finger_eint_pull_disable>;
+		pinctrl-14= <&cs_finger_pwr_off>;
+		pinctrl-15= <&cs_finger_pwr_on>;
+ 
+		interrupt-parent = <&eintc>;
+		interrupts = <__CS_FINGERPRINT_EINT_EN_PIN_NUM__  IRQ_TYPE_EDGE_RISING>;
+		debounce = <__CS_FINGERPRINT_EINT_EN_PIN_NUM__  0>;
+	};
+	// add by chipsailing end
+ 
+
+ /*   GPIO standardization */
+/*  add by chipsailing start GPIO standardization */
+&pio {
+   	
+	cs_finger_pwr_off: cs_finger_pwr_off {
+		/*pins_cmd_dat {
+			pins = <PINMUX_GPIO78__FUNC_GPIO78>;
+			slew-rate = <1>;
+			output-low;
+		};  */
+	};
+	cs_finger_pwr_on: cs_finger_pwr_on {
+		/*pins_cmd_dat {
+			pins = <PINMUX_GPIO78__FUNC_GPIO78>;
+			slew-rate = <1>;
+			output-high;
+		};  */
+	};
+ 
+	cs_finger_pins_default:cs_finger_pins_default{
+	
+		/*pins_cmd_dat {
+      			pins = <PINMUX_GPIO96__FUNC_SPI_CSA>;
+		};
+		pins_cmd2_dat {
+			pins = <PINMUX_GPIO98__FUNC_SPI_CKA>;
+		};
+		pins_cmd3_dat {
+			pins = <PINMUX_GPIO95__FUNC_SPI_MIA>;
+		};
+		pins_cmd4_dat {
+			pins = <PINMUX_GPIO97__FUNC_SPI_MOA>;
+		};*/
+	};
+ 
+	cs_finger_reset_en0:cs_finger_reset_en@0{
+		    pins_cmd_dat {
+			pins = <__CS_FINGERPRINT_RESET_PIN__>;
+			slew-rate = <1>;
+			output-low; 
+		};
+	};
+	cs_finger_reset_en1:cs_finger_reset_en@1{
+		    pins_cmd_dat {
+			pins = <__CS_FINGERPRINT_RESET_PIN__>;
+			slew-rate = <1>;
+			output-high;
+		};
+	};
+	cs_finger_spi0_mi_as_spi0_mi:cs_finger_spi0_mi_as_spi0_mi@0{
+		    pins_cmd_dat {
+
+
+			pins = <__CS_FINGERPRINT_MI_PIN__>;
+			slew-rate = <0>;
+			bias-disable;
+			output-low;
+			input-schmitt-enable = <0>;
+		};
+	};
+ 	
+	cs_finger_spi0_mi_as_gpio:cs_finger_spi0_mi_as_gpio@0{
+		    pins_cmd_dat {
+			pins = <__CS_FINGERPRINT_MI_PIN__>;
+			slew-rate = <0>;
+			output-low;
+			input-schmitt-enable = <0>;
+		};
+	};
+	
+ 
+	cs_finger_spi0_mo_as_spi0_mo:cs_finger_spi0_mo_as_spi0_mo@0{
+		    pins_cmd_dat {
+			pins = <__CS_FINGERPRINT_MO_PIN__>;
+			slew-rate = <1>;
+			bias-disable;
+			output-low;
+			input-schmitt-enable = <0>;
+		};
+	};
+ 
+	cs_finger_spi0_mo_as_gpio:cs_finger_spi0_mo_as_gpio@0{
+		    pins_cmd_dat {
+			pins = <__CS_FINGERPRINT_MO_PIN__>;
+			slew-rate = <1>;
+			output-low;
+			input-schmitt-enable = <0>;
+		};
+	};
+	cs_finger_spi0_clk_as_spi0_clk:cs_finger_spi0_clk_as_spi0_clk@0{
+		    pins_cmd_dat {
+			pins = <__CS_FINGERPRINT_CLK_PIN__>;
+			slew-rate = <1>;
+			bias-disable;
+			output-low;
+			input-schmitt-enable = <0>;
+		};
+	};
+	cs_finger_spi0_clk_as_gpio:cs_finger_spi0_clk_as_gpio@0{
+		    pins_cmd_dat {
+			pins = <__CS_FINGERPRINT_CLK_PIN__>;
+			slew-rate = <1>;
+			output-low;
+			input-schmitt-enable = <0>;
+		};
+	};
+	cs_finger_spi0_cs_as_spi0_cs:cs_finger_spi0_cs_as_spi0_cs@0{
+		    pins_cmd_dat {
+			pins = <__CS_FINGERPRINT_CS_PIN__>;
+			slew-rate = <1>;
+			bias-disable;
+			output-low;
+			input-schmitt-enable = <0>;
+		};
+	};
+	cs_finger_spi0_cs_as_gpio:cs_finger_spi0_cs_as_gpio@0{
+		    pins_cmd_dat {
+			pins = <__CS_FINGERPRINT_CS_PIN__>;
+			slew-rate = <1>;
+			output-low;
+			input-schmitt-enable = <0>;
+		};
+	};
+	cs_finger_int_as_int: cs_finger_int_as_int@0{
+			pins_cmd_dat {
+				pins = <__CS_FINGERPRINT_EINT_PIN__>;
+				slew-rate = <0>;
+				bias-pull-up = <00>;
+			};
+	};
+	
+	cs_finger_eint_pull_down: cs_finger_eint_pull_down { 
+    pins_cmd_dat { 
+    pins = <__CS_FINGERPRINT_EINT_PIN__>; 
+    slew-rate = <0>; 
+    bias-pull-down = <00>; 
+   }; 
+ }; 
+    cs_finger_eint_pull_disable: cs_finger_eint_pull_disable { 
+    pins_cmd_dat { 
+    pins = <__CS_FINGERPRINT_EINT_PIN__>; 
+    slew-rate = <0>; 
+    bias-disable; 
+   }; 
+ }; 
+};
+/*******************add by chipsailing end****************/
+/*******************finger pin end****************/
+ 

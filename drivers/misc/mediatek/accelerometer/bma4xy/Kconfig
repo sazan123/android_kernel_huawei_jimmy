@@ -1,0 +1,14 @@
+#
+# Makefile for Bosch sensors driver.
+#
+
+config MTK_BMA4XY
+	tristate "BMA4XY acceleration sensor support"
+	depends on I2C
+	default n
+	help
+	  If you say yes here, you get support for Bosch Sensortec's
+	  acceleration sensors BMA4XY.
+
+
+

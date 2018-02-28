@@ -1,0 +1,41 @@
+menu "Texas Instruments TAS2555 SmartAmp(R)"
+
+config SND_SOC_TAS2555_STEREO
+	tristate "TI TAS2555 Stereo amp support"
+	select TAS2555_I2C_STEREO
+	help
+        Texas Instruments TAS2555 SmartAmp(R)
+        it is a stereo speaker amp solution based on dual TAS2555
+        take I2S signal as input and controlled via i2c protocol
+
+        If unsure select "N".
+
+config TAS2555_I2C_STEREO
+	tristate "Use of I2C API"
+	depends on I2C
+	help
+        use i2c protocol to read/write register of TAS2555
+        select the option to support I2C driver with regmap for
+        Texas Instruments TAS2555 High Performance 4W Smart Amplifier
+
+        If unsure select "N".
+
+config TAS2555_CODEC_STEREO
+	tristate "TI TAS2555 Codec Driver support"
+	help
+        register as codec driver for TI TAS2555
+        with the option enabled,
+        use ASoC codec driver approach and link to machine driver
+
+        If unsure select "N".
+
+config TAS2555_MISC_STEREO
+	tristate "TI TAS2555 Misc Driver support"
+	help
+        register as misc driver for TI TAS2555
+        with the option enabled,
+        use misc driver approach and user space send ctrl cmd via device node
+
+        If unsure select "N".
+
+endmenu

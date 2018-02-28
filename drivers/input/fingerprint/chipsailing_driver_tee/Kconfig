@@ -1,0 +1,11 @@
+config CHIPSAILING
+	tristate "CHIPSAILING driver"
+	default y
+	---help---
+	  This selects the CHIPSAILING driver.
+	  If you want to use CHIPSAILING, say Y or M here.
+	  If unsure, say N.
+	  This selects the CHIPSAILING driver.
+	  If you want to use CHIPSAILING, say Y or M here.
+	  If unsure, say N.
+

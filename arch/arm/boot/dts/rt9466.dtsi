@@ -1,0 +1,21 @@
+&i2c1 {
+	rt9466@53 {
+		compatible = "richtek,rt9466";
+		reg = <0x53>;
+		rt,intr_gpio_num = <101>;	/* direct defined GPIO num */
+		rt,intr_gpio = <&pio 101 0>;
+		interrupt-names = "chg_mivr", "chg_statci";
+		status = "okay";
+		charger_name = "primary_charger";
+		ichg = <2000000>;	/* uA */
+		aicr = <500000>;	/* uA */
+		mivr = <4400000>;	/* uV */
+		cv = <4350000>;		/* uV */
+		ieoc = <250000>;	/* uA */
+		safety_timer = <12>;	/* hour */
+		ircmp_resistor = <25000>;	/* uohm */
+		ircmp_vclamp = <32000>;		/* uV */
+		enable_te;
+		enable_wdt;
+	};
+};
