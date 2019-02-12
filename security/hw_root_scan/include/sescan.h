@@ -20,7 +20,7 @@
 #include <linux/scatterlist.h>
 #include <linux/security.h>
 #include <linux/string.h>
-#include "./include/hw_rscan_utils.h"
+#include "hw_rscan_utils.h"
 
 extern int selinux_enforcing;
 

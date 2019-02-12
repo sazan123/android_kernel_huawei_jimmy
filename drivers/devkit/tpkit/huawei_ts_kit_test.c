@@ -24,7 +24,7 @@
 #if defined(CONFIG_HAS_EARLYSUSPEND)
 #include <linux/earlysuspend.h>
 #endif
-#include <huawei_ts_kit.h>
+#include "huawei_ts_kit.h"
 #include <linux/completion.h>
 
 enum ts_test_item_enum {

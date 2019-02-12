@@ -10,7 +10,7 @@
 //#include "kd_imgsensor.h"
 
 //+add by hzb
-#include <../misc/mediatek/include/mt-plat/mt_gpio.h>
+#include "../misc/mediatek/include/mt-plat/mt_gpio.h"
 #include "../misc/mediatek/include/mt-plat/mt6755/include/mach/gpio_const.h"
 //#include "upmu_common.h"
 //#include <mach/upmu_sw.h>
